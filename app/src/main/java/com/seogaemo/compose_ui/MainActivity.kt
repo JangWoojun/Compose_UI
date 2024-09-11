@@ -4,21 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.seogaemo.compose_ui.ui.theme.Compose_UITheme
@@ -42,61 +41,69 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Box(
-//        modifier = Modifier
-//            .size(100.dp)
-//            .background(Color.Black),
-//        contentAlignment = Alignment.Center
+//    Row (modifier = Modifier.height(40.dp)) {
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier
+//        )
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier
+//        )
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier
+//        )
+//    }
+
+//    Row (modifier = Modifier.height(40.dp)) {
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier.align(alignment = Alignment.Bottom)
+//        )
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier.align(alignment = Alignment.Top)
+//        )
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier.align(alignment = Alignment.CenterVertically)
+//        )
+//    }
+
+//    Row (
+//        modifier = Modifier.height(40.dp),
+//        verticalAlignment = Alignment.Bottom,
 //    ) {
 //        Text(
 //            text = "Hello $name!",
-//            modifier = modifier,
-//            textAlign = TextAlign.Center,
-//            color = Color.White
+//            modifier = modifier.align(alignment = Alignment.Top)
 //        )
-//    }
-
-//    Box(
-//        modifier = Modifier
-//            .size(200.dp)
-//            .background(Color.Black),
-//    ) {
 //        Text(
 //            text = "Hello $name!",
-//            modifier = modifier.align(Alignment.BottomEnd),
-//            textAlign = TextAlign.Center,
-//            color = Color.White
 //        )
 //        Text(
-//            text = "Bye $name!",
-//            modifier = modifier.align(Alignment.TopStart),
-//            textAlign = TextAlign.Center,
-//            color = Color.White
+//            text = "Hello $name!",
 //        )
 //    }
-//    Box(
-//        modifier = Modifier
-//            .size(200.dp)
-//            .border(BorderStroke(2.dp, Color.Black))
-//    ) {
-//        Box(modifier = Modifier.size(70.dp).background(Color.Red))
-//        Box(modifier = Modifier.size(70.dp).background(Color.Blue).align(Alignment.BottomEnd))
-//    }
 
-//    Box(
-//        modifier = Modifier
-//            .border(BorderStroke(2.dp, Color.Black))
-//    ) {
-//        Box(modifier = Modifier.matchParentSize().background(Color.Red))
-//        Box(modifier = Modifier.size(70.dp).background(Color.Blue).align(Alignment.BottomEnd))
-//    }
-
-    Box(
-        modifier = Modifier
-            .border(BorderStroke(2.dp, Color.Black))
+    Row (
+        modifier = Modifier.size(200.dp, 40.dp),
+        verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.Center
     ) {
-        Box(modifier = Modifier.fillMaxSize().background(Color.Red))
-        Box(modifier = Modifier.size(70.dp).background(Color.Blue).align(Alignment.BottomEnd))
+        Text(
+            text = "Hello",
+            modifier = Modifier.weight(1f).background(Color.Red)
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.weight(2f).background(Color.Blue)
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.weight(3f).background(Color.Magenta)
+        )
     }
 }
 
@@ -104,10 +111,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     Compose_UITheme {
-        Scaffold(modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp, 10.dp)
-        ) { innerPadding ->
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             Greeting(
                 name = "Android",
                 modifier = Modifier.padding(innerPadding)

@@ -6,12 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,69 +40,48 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Row (modifier = Modifier.height(40.dp)) {
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier
-//        )
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier
-//        )
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier
-//        )
+//    Column (modifier = Modifier.size(100.dp)) {
+//        Text(text = "첫 번째")
+//        Text(text = "두 번째")
+//        Text(text = "세 번째")
 //    }
 
-//    Row (modifier = Modifier.height(40.dp)) {
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier.align(alignment = Alignment.Bottom)
-//        )
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier.align(alignment = Alignment.Top)
-//        )
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier.align(alignment = Alignment.CenterVertically)
-//        )
-//    }
-
-//    Row (
-//        modifier = Modifier.height(40.dp),
-//        verticalAlignment = Alignment.Bottom,
+//    Column (
+//        modifier = Modifier
+//            .size(100.dp)
+//            .background(Color.Red)
+//        ,
+//        horizontalAlignment = Alignment.End
 //    ) {
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier.align(alignment = Alignment.Top)
-//        )
-//        Text(
-//            text = "Hello $name!",
-//        )
-//        Text(
-//            text = "Hello $name!",
-//        )
+//        Text(text = "첫 번째")
+//        Text(text = "두 번째")
+//        Text(text = "세 번째")
 //    }
 
-    Row (
-        modifier = Modifier.size(200.dp, 40.dp),
-        verticalAlignment = Alignment.Bottom,
-        horizontalArrangement = Arrangement.Center
+//    Column (
+//        modifier = Modifier
+//            .size(100.dp)
+//            .background(Color.Red)
+//        ,
+//        verticalArrangement = Arrangement.Bottom,
+//        horizontalAlignment = Alignment.End
+//    ) {
+//        Text(text = "첫 번째")
+//        Text(text = "두 번째")
+//        Text(text = "세 번째")
+//    }
+
+    Column (
+        modifier = Modifier
+            .size(100.dp)
+            .background(Color.Red)
+        ,
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.End
     ) {
-        Text(
-            text = "Hello",
-            modifier = Modifier.weight(1f).background(Color.Red)
-        )
-        Text(
-            text = "Hello",
-            modifier = Modifier.weight(2f).background(Color.Blue)
-        )
-        Text(
-            text = "Hello",
-            modifier = Modifier.weight(3f).background(Color.Magenta)
-        )
+        Text(text = "첫 번째", modifier = Modifier.align(Alignment.Start).fillMaxWidth())
+        Text(text = "두 번째")
+        Text(text = "세 번째")
     }
 }
 

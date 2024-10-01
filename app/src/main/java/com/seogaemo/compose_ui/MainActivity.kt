@@ -13,7 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,49 +45,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Column (modifier = Modifier.size(100.dp)) {
-//        Text(text = "첫 번째")
-//        Text(text = "두 번째")
-//        Text(text = "세 번째")
-//    }
-
-//    Column (
-//        modifier = Modifier
-//            .size(100.dp)
-//            .background(Color.Red)
-//        ,
-//        horizontalAlignment = Alignment.End
-//    ) {
-//        Text(text = "첫 번째")
-//        Text(text = "두 번째")
-//        Text(text = "세 번째")
-//    }
-
-//    Column (
-//        modifier = Modifier
-//            .size(100.dp)
-//            .background(Color.Red)
-//        ,
-//        verticalArrangement = Arrangement.Bottom,
-//        horizontalAlignment = Alignment.End
-//    ) {
-//        Text(text = "첫 번째")
-//        Text(text = "두 번째")
-//        Text(text = "세 번째")
-//    }
-
-    Column (
-        modifier = Modifier
-            .size(100.dp)
-            .background(Color.Red)
-        ,
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.End
-    ) {
-        Text(text = "첫 번째", modifier = Modifier.align(Alignment.Start).fillMaxWidth())
-        Text(text = "두 번째")
-        Text(text = "세 번째")
-    }
+    var value by remember { mutableStateOf(name) }
+    TextField(value = value, onValueChange = { newValue -> value = newValue } )
 }
 
 @Preview(showBackground = true)

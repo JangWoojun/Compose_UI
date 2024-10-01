@@ -4,13 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
@@ -22,9 +29,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Compose_UITheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting()
-                }
+                Greeting()
             }
         }
     }
@@ -32,10 +37,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-    BoxWithConstraints(modifier = Modifier.heightIn(max = 120.dp)) {
-        if (maxHeight > 100.dp) Text(text = "높이 100 이상")
-
-        Text("$maxWidth, $maxHeight, $minWidth, $minHeight")
+    Column {
+        Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null)
+        Image(imageVector = Icons.Filled.Call, contentDescription = null)
     }
 }
 

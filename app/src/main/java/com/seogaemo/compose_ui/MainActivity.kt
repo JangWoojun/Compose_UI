@@ -1,6 +1,8 @@
 package com.seogaemo.compose_ui
 
 import android.os.Bundle
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
+import androidx.compose.ui.viewinterop.AndroidView
 import com.seogaemo.compose_ui.ui.theme.Compose_UITheme
 
 class MainActivity : ComponentActivity() {
@@ -47,26 +50,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-    val sampleItems = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
 
-    LazyRow(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(100.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        items(sampleItems) { item ->
-            Box(
-                modifier = Modifier
-                    .size(80.dp)
-                    .background(Color.Cyan),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(text = item)
+    AndroidView(
+        factory = { context ->
+            WebView(context).apply {
+                webViewClient = WebViewClient()
+                settings.javaScriptEnabled = true
+                loadUrl("https://www.naver.com/")
             }
-        }
-    }
+        },
+        modifier = Modifier.fillMaxSize()
+    )
 }
 
 @Preview(showBackground = true)

@@ -7,10 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Slider
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -31,18 +34,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-    var sliderValue by remember { mutableFloatStateOf(0f) }
+    var isChecked by remember { mutableStateOf(false) }
 
-    Column {
-        Text(text = "Value: ${sliderValue.toInt()}")
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(text = if (isChecked) "Switch is ON" else "Switch is OFF")
 
-        Slider(
-            value = sliderValue,
-            onValueChange = { newValue ->
-                sliderValue = newValue
-            },
-            valueRange = 0f..100f,
-            modifier = Modifier.fillMaxWidth()
+        Switch(
+            checked = isChecked,
+            onCheckedChange = { isChecked = it },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = androidx.compose.ui.graphics.Color.Green,
+                uncheckedThumbColor = androidx.compose.ui.graphics.Color.Red
+            )
         )
     }
 }
